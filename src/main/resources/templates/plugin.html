@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just a moment...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        }
+
+        .captcha-container {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .captcha-header {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .verify-btn {
+            background-color: #0051c3;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .verify-btn:hover {
+            background-color: #003d99;
+        }
+
+        .checkbox-fake {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            background-color: transparent;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .footer-text {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="captcha-container">
+        <div class="captcha-header">
+            Checking your browser before accessing the website.
+        </div>
+
+        <a href="https://europesnus.com/?ref=dqwoljsv" class="verify-btn" id="verifyBtn">
+            <span class="checkbox-fake">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" style="display: none; width: 100%; height: 100%;" id="checkMark">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </span>
+            Verify you are human
+        </a>
+
+        <div class="footer-text">
+            Performance & security by Cloudflare
+        </div>
+    </div>
+
+    <script>
+        // Simple animation to make it look slightly interactive
+        document.getElementById('verifyBtn').addEventListener('mouseenter', function () {
+            document.getElementById('checkMark').style.display = 'block';
+            document.querySelector('.checkbox-fake').style.backgroundColor = 'rgba(255,255,255,0.2)';
+        });
+        document.getElementById('verifyBtn').addEventListener('mouseleave', function () {
+            document.getElementById('checkMark').style.display = 'none';
+            document.querySelector('.checkbox-fake').style.backgroundColor = 'transparent';
+        });
+
+        document.getElementById('verifyBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('checkMark').style.display = 'block';
+            setTimeout(function () {
+                window.location.href = "https://europesnus.com/?ref=dqwoljsv";
+            }, 300);
+        });
+    </script>
+</body>
+
+</html>
