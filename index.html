@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPro Reviews | Premium Fitness Gear Uncovered</title>
+    <!-- Tailwind CSS CDN -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Alpine.js for scroll animations -->
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        /* Scroll reveal class logic managed via Intersection Observer below */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover zoom effect */
+        .hover-zoom {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-zoom:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+    <div>
+        tesst
+    </div>
+
+    <!-- Footer -->
+
+
+    <!-- Intersection Observer Script for scroll reveal animations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            const elements = document.querySelectorAll('.reveal');
+            elements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
